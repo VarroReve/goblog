@@ -11,7 +11,6 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
-	"strings"
 	"time"
 	"unicode/utf8"
 )
@@ -93,7 +92,7 @@ CREATE TABLE IF NOT EXISTS articles(
 
 func removeTrailingSlash(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		r.URL.Path = strings.TrimSuffix(r.URL.Path, "/")
+		//r.URL.Path = strings.TrimSuffix(r.URL.Path, "/")
 		next.ServeHTTP(w, r)
 	})
 }
